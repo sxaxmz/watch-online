@@ -8,9 +8,11 @@
 	<link rel="stylesheet" href="index.css">
 </head>
 <body>
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#"><span class="logoPt1">Movie</span>Site</a>
+<div id="notify">
+	<p>Notification bar</p>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
+  <a class="navbar-brand" href="#"><span class="logoPt1">Movie</span><span class="logoPt2">Site</span></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -43,6 +45,9 @@
           <a class="dropdown-item" href="#">Upcoming movies</a>
         </div>
       </li>
+      <li class="nav-item">
+      	<img onmouseover="lightOff(this)" onmouseout="lightOn(this)" src="images/lightOn.png" height="35px" width="40px" alt="Lights">
+      </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -51,90 +56,92 @@
   </div>
 </nav>
 
-<div class="card-group-container">
-	<div class="card-group">
-	  <div class="card mx-2 mb-3">
-	    <img class="card-img-top" src="images/lp.png" alt="Card image cap">
-	    <div class="card-body">
-	      <h5 class="card-title">Lorem Ipsum</h5>
-	      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-	    </div>
-	    <div class="card-footer">
-		      <small class="text-muted">2013</small>
+<div class="siteContent">
+	<div class="card-group-container">
+		<div class="card-group">
+		  <div class="card mx-2 mb-3">
+		    <img class="card-img-top" src="images/lp.png" alt="Card image cap">
+		    <div class="card-body">
+		      <h5 class="card-title">Lorem Ipsum</h5>
+		      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+		    </div>
+		    <div class="card-footer">
+			      <small class="text-muted">2013</small>
+			  </div>
 		  </div>
-	  </div>
-	  <div class="card mx-2 mb-3">
-	    <img class="card-img-top" src="images/lp.png" alt="Card image cap">
-	    <div class="card-body">
-	      <h5 class="card-title">Lorem Ipsum</h5>
-	      <p class="card-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa </p>
-	    </div>
-	    <div class="card-footer">
-		      <small class="text-muted">2015</small>
+		  <div class="card mx-2 mb-3">
+		    <img class="card-img-top" src="images/lp.png" alt="Card image cap">
+		    <div class="card-body">
+		      <h5 class="card-title">Lorem Ipsum</h5>
+		      <p class="card-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa </p>
+		    </div>
+		    <div class="card-footer">
+			      <small class="text-muted">2015</small>
+			  </div>
 		  </div>
-	  </div>
-	  <div class="card mx-2 mb-3">
-	    <img class="card-img-top" src="images/lp.png" alt="Card image cap">
-	    <div class="card-body">
-	      <h5 class="card-title">Lorem Ipsum</h5>
-	      <p class="card-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	    </div>
-	    <div class="card-footer">
-		      <small class="text-muted">2019</small>
+		  <div class="card mx-2 mb-3">
+		    <img class="card-img-top" src="images/lp.png" alt="Card image cap">
+		    <div class="card-body">
+		      <h5 class="card-title">Lorem Ipsum</h5>
+		      <p class="card-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		    </div>
+		    <div class="card-footer">
+			      <small class="text-muted">2019</small>
+			  </div>
 		  </div>
-	  </div>
-	  <div class="card mx-2 mb-3">
-	    <img class="card-img-top" src="images/lp.png" alt="Card image cap">
-	    <div class="card-body">
-	      <h5 class="card-title">Lorem Ipsum</h5>
-	      <p class="card-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa </p>
-	    </div>
-	    <div class="card-footer">
-		      <small class="text-muted">2020</small>
+		  <div class="card mx-2 mb-3">
+		    <img class="card-img-top" src="images/lp.png" alt="Card image cap">
+		    <div class="card-body">
+		      <h5 class="card-title">Lorem Ipsum</h5>
+		      <p class="card-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa </p>
+		    </div>
+		    <div class="card-footer">
+			      <small class="text-muted">2020</small>
+			  </div>
 		  </div>
-	  </div>
-	</div>
-	<div class="card-group">
-	  <div class="card mx-2 mb-3">
-	    <img class="card-img-top" src="images/lp.png" alt="Card image cap">
-	    <div class="card-body">
-	      <h5 class="card-title">Lorem Ipsum</h5>
-	      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-	    </div>
-	    <div class="card-footer">
-		      <small class="text-muted">2013</small>
+		</div>
+		<div class="card-group">
+		  <div class="card mx-2 mb-3">
+		    <img class="card-img-top" src="images/lp.png" alt="Card image cap">
+		    <div class="card-body">
+		      <h5 class="card-title">Lorem Ipsum</h5>
+		      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+		    </div>
+		    <div class="card-footer">
+			      <small class="text-muted">2013</small>
+			  </div>
 		  </div>
-	  </div>
-	  <div class="card mx-2 mb-3">
-	    <img class="card-img-top" src="images/lp.png" alt="Card image cap">
-	    <div class="card-body">
-	      <h5 class="card-title">Lorem Ipsum</h5>
-	      <p class="card-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa </p>
-	    </div>
-	    <div class="card-footer">
-		      <small class="text-muted">2015</small>
+		  <div class="card mx-2 mb-3">
+		    <img class="card-img-top" src="images/lp.png" alt="Card image cap">
+		    <div class="card-body">
+		      <h5 class="card-title">Lorem Ipsum</h5>
+		      <p class="card-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa </p>
+		    </div>
+		    <div class="card-footer">
+			      <small class="text-muted">2015</small>
+			  </div>
 		  </div>
-	  </div>
-	  <div class="card mx-2 mb-3">
-	    <img class="card-img-top" src="images/lp.png" alt="Card image cap">
-	    <div class="card-body">
-	      <h5 class="card-title">Lorem Ipsum</h5>
-	      <p class="card-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	    </div>
-	    <div class="card-footer">
-		      <small class="text-muted">2019</small>
+		  <div class="card mx-2 mb-3">
+		    <img class="card-img-top" src="images/lp.png" alt="Card image cap">
+		    <div class="card-body">
+		      <h5 class="card-title">Lorem Ipsum</h5>
+		      <p class="card-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		    </div>
+		    <div class="card-footer">
+			      <small class="text-muted">2019</small>
+			  </div>
 		  </div>
-	  </div>
-	  <div class="card mx-2 mb-3">
-	    <img class="card-img-top" src="images/lp.png" alt="Card image cap">
-	    <div class="card-body">
-	      <h5 class="card-title">Lorem Ipsum</h5>
-	      <p class="card-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa </p>
-	    </div>
-	    <div class="card-footer">
-		      <small class="text-muted">2020</small>
+		  <div class="card mx-2 mb-3">
+		    <img class="card-img-top" src="images/lp.png" alt="Card image cap">
+		    <div class="card-body">
+		      <h5 class="card-title">Lorem Ipsum</h5>
+		      <p class="card-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa </p>
+		    </div>
+		    <div class="card-footer">
+			      <small class="text-muted">2020</small>
+			  </div>
 		  </div>
-	  </div>
+		</div>
 	</div>
 </div>
 
@@ -154,6 +161,7 @@
 
 
 <script type="text/javascript" src="index.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>

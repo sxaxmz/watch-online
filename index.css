@@ -4,7 +4,6 @@
         height: 120px;
         padding-bottom: 7px;
         margin-top: 100px;
-        position:fixed;
 	    bottom:0;
 }
 
@@ -35,8 +34,14 @@
 	font-weight: 650;
 }
 
-.logoPt1:hover {
+.navbar-brand:hover .logoPt1 {
 	color: #d7d7d7;
+	font-weight: 450;
+}
+
+.navbar-brand:hover .logoPt2 {
+	color:#009900;
+	font-weight: 650;
 }
 
 .card-group-container {
@@ -62,4 +67,28 @@
 
 .card-footer {
 	text-align: center;
+}
+
+.navbar-sticky {
+	z-index:1;
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+.siteContent {
+	/** **/
+}
+
+#notify {
+	height: 15px;
+	background-color: #000;
+	border-radius: 2em;
+	margin: 0 auto;
+}
+
+#notify p {
+	font-size: 10px;
+	color: #d7d7d7;
+	margin-right: 10px;
+	margin-left: 10px;
 }
