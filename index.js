@@ -32,24 +32,30 @@ function stickyNavbar () {
 function cardHover (element) {
 		element.style.paddingLeft = "10px";
 		element.style.paddingRight = "10px";
-		element.style.backgroundColor = "#D6D6D0";
 	}
 
 function cardLeave (element) {
 		element.style.paddingLeft = "0px";
 		element.style.paddingRight = "0px";
-		element.style.backgroundColor = "#F5F5F0";
-	}
+	}	
 
 var card = document.querySelectorAll('.card');
 
 card.forEach( function(el) {
 	el.onmouseover = function (){
-		cardHover(el);
+		if (navbar.classList.contains("bg-light")) {
+			cardHover(el);
+		} else {
+			cardHoverDark(el);
+		}
 	}
 
 	el.onmouseout = function (){
-		cardLeave(el);
+		if (navbar.classList.contains("bg-light")) {
+			cardLeave(el);
+		} else {
+			cardLeaveDark(el);
+		}
 	}
 });
 
@@ -61,15 +67,13 @@ var notifyTxt = document.getElementById("notifyTxt");
 function darkMode (x) {
 	if (navbar.classList.contains("bg-light")) {
 		navbar.classList.add("bg-dark");
-		document.body.style.backgroundColor = "#5C6369";
-		cardContainer.style.borderColor = "#28A745";
-		notifyTxt.style.color = "#28A745";
+		document.body.classList.add("dark");
+		notifyTxt.style.color = "#000";
 		notificationBar.style.backgroundColor = "#5C6369";
 		navbar.classList.remove("bg-light");
 	} else {
 		navbar.classList.add("bg-light");
-		cardContainer.style.borderColor = "#000";
-		document.body.style.backgroundColor = "#fff";
+		document.body.classList.remove("dark");
 		notificationBar.style.backgroundColor = "#F8F9FA";
 		notifyTxt.style.color = "#000";
 		navbar.classList.remove("bg-dark");
