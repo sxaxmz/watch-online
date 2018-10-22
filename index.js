@@ -11,6 +11,7 @@ function lightOff (x){
 	} else {
 		x.src = 'images/lightOff.png';
 	}
+	x.style.cursor = "pointer";
 }
 
 function lightOn (x){
