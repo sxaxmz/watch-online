@@ -41,6 +41,18 @@ function cardLeave (element) {
 	}	
 
 var card = document.querySelectorAll('.card');
+var movieTitle = document.getElementById("movieTitle");
+var movieDescription = document.getElementById("movieDescription");
+var titleMovie = document.getElementById("titleMovie");
+var descriptionMovie = document.getElementsByClassName("descriptionMovie");
+
+function movieInfo (el) {
+	var content = el.getElementsByTagName("p")[0].innerText;
+	var title = el.getElementsByTagName("h5")[0].innerText;
+	var date = el.getElementsByTagName("small")[0].innerText;
+	movieTitle.innerText = title +" , "+ date;
+	movieDescription.innerText = content;
+}
 
 card.forEach( function(el) {
 	el.onmouseover = function (){
@@ -57,6 +69,10 @@ card.forEach( function(el) {
 		} else {
 			cardLeaveDark(el);
 		}
+	}
+
+	el.onclick = function() {
+		movieInfo(el);
 	}
 });
 
