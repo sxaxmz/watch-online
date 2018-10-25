@@ -1,0 +1,1 @@
+var data = '[{"movieTitle": "google", "url" : "https://www.google.com", "img" :"lp.png", "desc" : "desc", "years": "2001"},{"movieTitle": "fb","url":"https://www.fb.com", "img" :"lp.png", "desc" : "desc", "years": "2001"},{"movieTitle": "twitter","url":"https://www.twitter.com", "img" :"lp.png", "desc" : "desc", "years": "2001"}]'

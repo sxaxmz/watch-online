@@ -1,50 +1,132 @@
+														/** sticky navbar **/
+	var navbar = document.getElementById("navbar");
+	var sticky = navbar.offsetTop;
+
+function stickyNavbar () {
+	if (window.pageYOffset > sticky) {
+		navbar.classList.add("navbar-sticky");
+	} else {
+		navbar.classList.remove("navbar-sticky");
+	}
+}
+
 window.onscroll = function() {
 		stickyNavbar();
 }
 
-var siteContent = document.getElementById("siteContent");
-var images = ["lp.png","lp.png","lp.png","lp.png","lp.png","lp.png","lp.png","lp.png"];
-var movies = ["movie1","movie2","movie3","movie4","movie5","movie6","movie7","movie8"];
-var description = ["description1","description2","description3","description4","description5","description6","description7","description8"];
-var years = ["2011","2012","2013","2014","2015","2016","2017","2018"];
-var count = 0;
+	var content,images,movies,description,years,url;
+	var siteContent = document.getElementById("siteContent");
 
-					/* basic function/method that will be used to utilize the data into responsive form */
-var content = '<div id="card-group-container">'+
-			  '<div class="card-group">';
-if(years.length == movies.length){
-	for (var i = 0; i<movies.length; i++){
+	cardDeck(movies,description,images,years,url);
 
-		if (count > 3) {
-					content += '</div>'+
-								'<div class="card-group">';
-					count = 0;
-				}
+function cardDeck (movies,description,images,years,url){
+	content = '<div id="card-group-container">'+
+				  '<div class="card-group">';
 
-		content += 
-				'<div class="card mx-2 mb-3" data-toggle="modal" data-target="#myModal">'+ 
-			    '    <img class="card-img-top" src="images/'+images[i]+'" alt="Card image cap">'+
-			    '    <div class="card-body">'+
-			    '      <h5 class="card-title"id="titleMovie">'+movies[i]+'</h5>'+
-			    '      <p class="card-text" id="descriptionMovie">'+description[i]+'</p>'+
-			    '    </div>'+
-			    '    <div class="card-footer">'+
-				'      <small class="text-muted">'+years[i]+'</small>'+
-				'    </div>'+
-				'</div>';
-
-				count++;				
-	}
+    jsonToCard(movies,description,images,years,url);
 
 	content += '</div>'+
 			   '</div>';
+
+	siteContent.innerHTML = content;
 }
 
-siteContent.innerHTML = content;
+function jsonToCard(movies,description,images,years,url){
+					/* basic function/method that will be used to utilize the data into responsive form */
+	var json = JSON.parse(data);
+	json.forEach(function(item,index,array){
+		 images = item['img']; 
+		 movies = item['movieTitle'];
+		 description = item['desc'];
+		 url = item['url'];
+		 years = item['years'];	
 
-var navbar = document.getElementById("navbar");
-var sticky = navbar.offsetTop;
+		 /*Debug
+			console.log(images+" <--images-->"+index);
+			console.log(url+" <--url-->"+index);
+			console.log(movies+" <--movies-->"+index);
+			console.log(years+" <--years-->"+index);
+			console.log(description+" <--description-->"+index);
+			console.log("----------------")
+		*/
+			deployCards(movies,description,images,years,url);	
+	});
+}
 
+function deployCards(movies,description,images,years,url) {
+	var count = 0;
+
+	/* debug
+	console.log(images+" <--images");
+	console.log(url+" <--url");
+	console.log(movies+" <--movies");
+	console.log(years+" <--years");
+	console.log(description+" <--description");
+	console.log("##########")
+
+	*/
+	if (count > 3) {
+				content += '</div>'+
+							'<div class="card-group">';
+				count = 0;
+			}
+
+	content += 
+			'<div class="card mx-2 mb-3" data-toggle="modal" data-target="#myModal">'+ 
+		    '    <img class="card-img-top" src="images/'+images+'" alt="Card image cap">'+
+		    '    <div class="card-body">'+
+		    '      <h5 class="card-title"id="titleMovie">'+movies+'</h5>'+
+		    '      <p class="card-text" id="descriptionMovie">'+description+'</p>'+
+		    '    </div>'+
+		    '    <div class="card-footer">'+
+			'      <small class="text-muted">'+years+'</small>'+
+			'    </div>'+
+			'</div>';
+
+			count++;				
+}
+
+															/** moving data to modal **/
+	var card = document.querySelectorAll('.card');
+	var movieTitle = document.getElementById("movieTitle");
+	var movieDescription = document.getElementById("movieDescription");
+	var titleMovie = document.getElementById("titleMovie");
+	var descriptionMovie = document.getElementsByClassName("descriptionMovie");
+
+function movieInfo (el) {
+	var content = el.getElementsByTagName("p")[0].innerText;
+	var title = el.getElementsByTagName("h5")[0].innerText;
+	var date = el.getElementsByTagName("small")[0].innerText;
+	movieTitle.innerText = title +" , "+ date;
+	movieDescription.innerText = content;
+}
+
+															/** card hover **/
+function cardHover (element) {
+		element.style.paddingLeft = "10px";
+		element.style.paddingRight = "10px";
+	}
+
+function cardLeave (element) {
+		element.style.paddingLeft = "0px";
+		element.style.paddingRight = "0px";
+	}
+
+card.forEach( function(el) {
+	el.onmouseover = function (){
+			cardHover(el);	
+	}
+
+	el.onmouseout = function (){
+			cardLeave(el);
+	}
+
+	el.onclick = function() {
+		movieInfo(el);
+	}
+});
+
+															/** dark mode **/
 function lightOff (x){
 	if (navbar.classList.contains("bg-dark")) {
 		x.src = 'images/lightOn.png';
@@ -62,57 +144,11 @@ function lightOn (x){
 	}
 }
 
-function stickyNavbar () {
-	if (window.pageYOffset > sticky) {
-		navbar.classList.add("navbar-sticky");
-	} else {
-		navbar.classList.remove("navbar-sticky");
-	}
-}
-
-function cardHover (element) {
-		element.style.paddingLeft = "10px";
-		element.style.paddingRight = "10px";
-	}
-
-function cardLeave (element) {
-		element.style.paddingLeft = "0px";
-		element.style.paddingRight = "0px";
-	}	
-
-var card = document.querySelectorAll('.card');
-var movieTitle = document.getElementById("movieTitle");
-var movieDescription = document.getElementById("movieDescription");
-var titleMovie = document.getElementById("titleMovie");
-var descriptionMovie = document.getElementsByClassName("descriptionMovie");
-
-function movieInfo (el) {
-	var content = el.getElementsByTagName("p")[0].innerText;
-	var title = el.getElementsByTagName("h5")[0].innerText;
-	var date = el.getElementsByTagName("small")[0].innerText;
-	movieTitle.innerText = title +" , "+ date;
-	movieDescription.innerText = content;
-}
-
-card.forEach( function(el) {
-	el.onmouseover = function (){
-			cardHover(el);	
-	}
-
-	el.onmouseout = function (){
-			cardLeave(el);
-	}
-
-	el.onclick = function() {
-		movieInfo(el);
-	}
-});
-
-var cardContainer = document.getElementById("card-group-container");
-var card = document.getElementsByClassName("card");
-var notificationBar = document.getElementById("Notification");
-var notifyTxt = document.getElementById("notifyTxt");
-var modal = document.getElementById("modal");
+	var cardContainer = document.getElementById("card-group-container");
+	var card = document.getElementsByClassName("card");
+	var notificationBar = document.getElementById("Notification");
+	var notifyTxt = document.getElementById("notifyTxt");
+	var modal = document.getElementById("modal");
 
 function darkMode (x) {
 	if (navbar.classList.contains("bg-light")) {
