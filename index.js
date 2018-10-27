@@ -14,9 +14,9 @@ window.onscroll = function() {
 		stickyNavbar();
 }
 
-	var content,images,movies,description,years,url;
+					/* basic function/method that will be used to utilize the data into responsive form */
+	var content,images,movies,description,years,url,movieURL;
 	var siteContent = document.getElementById("siteContent");
-
 	cardDeck(movies,description,images,years,url);
 
 function cardDeck (movies,description,images,years,url){
@@ -31,8 +31,7 @@ function cardDeck (movies,description,images,years,url){
 	siteContent.innerHTML = content;
 }
 
-function jsonToCard(movies,description,images,years,url){
-					/* basic function/method that will be used to utilize the data into responsive form */
+function jsonToCard(movies,description,images,years,url){					
 	var json = JSON.parse(data);
 	json.forEach(function(item,index,array){
 		 images = item['img']; 
@@ -92,13 +91,26 @@ function deployCards(movies,description,images,years,url) {
 	var movieDescription = document.getElementById("movieDescription");
 	var titleMovie = document.getElementById("titleMovie");
 	var descriptionMovie = document.getElementsByClassName("descriptionMovie");
+	var link = document.getElementById("movieLink");
 
 function movieInfo (el) {
 	var content = el.getElementsByTagName("p")[0].innerText;
 	var title = el.getElementsByTagName("h5")[0].innerText;
 	var date = el.getElementsByTagName("small")[0].innerText;
+	link.innerHTML = '<iframe src="'+movieLink(movieURL,title)+'"></iframe>';
+	console.log(link);
 	movieTitle.innerText = title +" , "+ date;
 	movieDescription.innerText = content;
+}
+
+function movieLink (linkMovie,nameMovie){
+	var json = JSON.parse(data);
+	json.forEach(function(item){
+		if (nameMovie == item["movieTitle"]) {
+			linkMovie = item["url"];			
+		}		
+	});
+	return linkMovie;
 }
 
 															/** card hover **/
