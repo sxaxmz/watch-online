@@ -16,7 +16,7 @@ window.onscroll = function() {
 
 					/* basic function/method that will be used to utilize the data into responsive form */
 	var content,images,movies,description,years,url,movieURL;
-	var searchIndex = 0;
+	var searchIndex = 0, count = 0;
 	var siteContent = document.getElementById("siteContent");
 	cardDeck(movies,description,images,years,url);
 
@@ -65,24 +65,13 @@ function jsonToCard(movies,description,images,years,url){
 			console.log(movies+" <--movies-->"+index);
 			console.log(years+" <--years-->"+index);
 			console.log(description+" <--description-->"+index);
-			console.log("----------------");
+			console.log("##########");
 			*/
 				
 	});
 }
 
 function deployCards(movies,description,images,years,url) {
-	var count = 0;
-
-	/* debug
-	console.log(images+" <--images");
-	console.log(url+" <--url");
-	console.log(movies+" <--movies");
-	console.log(years+" <--years");
-	console.log(description+" <--description");
-	console.log("##########")
-
-	*/
 	if (count > 3) {
 				content += '</div>'+
 							'<div class="card-group">';

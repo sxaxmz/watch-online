@@ -53,10 +53,8 @@
 }
 
 .card {
-	margin: 20px;
-	margin-top:5px;
-	margin-bottom:5px;
-	max-width: 90%;
+	margin: 1%;
+	max-width: 24%;
 	background-color: #f5f5f0;
 	border-radius: 2em;
 	cursor: pointer;
