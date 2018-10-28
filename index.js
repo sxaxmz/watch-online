@@ -31,16 +31,17 @@ function cardDeck (movies,description,images,years,url){
 			   '</div>';
 
 	siteContent.innerHTML = content;
+	var card = document.querySelectorAll('.card');
+	cardAction(card);
 }
 
 function jsonToCard(movies,description,images,years,url){				
 	var json = JSON.parse(data);
 	json.forEach(function(item,index,array){
 		if (searchIndex == 1){
-			console.log("search -=>"+searchIndex);
 			console.log("Searching for -->"+movies+" , current --> "+item["id"]);
 			if (movies == item['id']){
-				console.log("The movie title is "+movies);
+				 movies = item["movieTitle"];
 				 images = item['img']; 
 				 description = item['desc'];
 				 url = item['url'];
@@ -49,7 +50,6 @@ function jsonToCard(movies,description,images,years,url){
 				 deployCards(movies,description,images,years,url);
 			}
 		} else if (searchIndex == 0){
-		 console.log("search -=>"+searchIndex);
 		 images = item['img']; 
 		 movies = item['movieTitle'];
 		 description = item['desc'];
@@ -74,12 +74,6 @@ function jsonToCard(movies,description,images,years,url){
 function deployCards(movies,description,images,years,url) {
 	var count = 0;
 
-	console.log(images+" <--images");
-	console.log(url+" <--url");
-	console.log(movies+" <--movies");
-	console.log(years+" <--years");
-	console.log(description+" <--description");
-	console.log("##########")
 	/* debug
 	console.log(images+" <--images");
 	console.log(url+" <--url");
@@ -111,7 +105,7 @@ function deployCards(movies,description,images,years,url) {
 }
 
 															/** moving data to modal **/
-	var card = document.querySelectorAll('.card');
+	
 	var movieTitle = document.getElementById("movieTitle");
 	var movieDescription = document.getElementById("movieDescription");
 	var titleMovie = document.getElementById("titleMovie");
@@ -123,7 +117,7 @@ function movieInfo (el) {
 	var title = el.getElementsByTagName("h5")[0].innerText;
 	var date = el.getElementsByTagName("small")[0].innerText;
 	link.innerHTML = '<iframe src="'+movieLink(movieURL,title)+'"></iframe>';
-	console.log(link);
+	console.log(el);
 	movieTitle.innerText = title +" , "+ date;
 	movieDescription.innerText = content;
 }
@@ -149,6 +143,7 @@ function cardLeave (element) {
 		element.style.paddingRight = "0px";
 	}
 
+function cardAction (card){
 card.forEach( function(el) {
 	el.onmouseover = function (){
 			cardHover(el);	
@@ -162,6 +157,7 @@ card.forEach( function(el) {
 		movieInfo(el);
 	}
 });
+}
 
 															/** dark mode **/
 function lightOff (x){
@@ -182,7 +178,6 @@ function lightOn (x){
 }
 
 	var cardContainer = document.getElementById("card-group-container");
-	var card = document.getElementsByClassName("card");
 	var notificationBar = document.getElementById("Notification");
 	var notifyTxt = document.getElementById("notifyTxt");
 	var modal = document.getElementById("modal");
