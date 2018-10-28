@@ -16,10 +16,12 @@ window.onscroll = function() {
 
 					/* basic function/method that will be used to utilize the data into responsive form */
 	var content,images,movies,description,years,url,movieURL;
+	var searchIndex = 0;
 	var siteContent = document.getElementById("siteContent");
 	cardDeck(movies,description,images,years,url);
 
 function cardDeck (movies,description,images,years,url){
+
 	content = '<div id="card-group-container">'+
 				  '<div class="card-group">';
 
@@ -31,30 +33,53 @@ function cardDeck (movies,description,images,years,url){
 	siteContent.innerHTML = content;
 }
 
-function jsonToCard(movies,description,images,years,url){					
+function jsonToCard(movies,description,images,years,url){				
 	var json = JSON.parse(data);
 	json.forEach(function(item,index,array){
+		if (searchIndex == 1){
+			console.log("search -=>"+searchIndex);
+			console.log("Searching for -->"+movies+" , current --> "+item["id"]);
+			if (movies == item['id']){
+				console.log("The movie title is "+movies);
+				 images = item['img']; 
+				 description = item['desc'];
+				 url = item['url'];
+				 years = item['years'];
+
+				 deployCards(movies,description,images,years,url);
+			}
+		} else if (searchIndex == 0){
+		 console.log("search -=>"+searchIndex);
 		 images = item['img']; 
 		 movies = item['movieTitle'];
 		 description = item['desc'];
 		 url = item['url'];
 		 years = item['years'];	
 
-		 /*Debug
+		 deployCards(movies,description,images,years,url);
+		}
+
+		/*
 			console.log(images+" <--images-->"+index);
 			console.log(url+" <--url-->"+index);
 			console.log(movies+" <--movies-->"+index);
 			console.log(years+" <--years-->"+index);
 			console.log(description+" <--description-->"+index);
-			console.log("----------------")
-		*/
-			deployCards(movies,description,images,years,url);	
+			console.log("----------------");
+			*/
+				
 	});
 }
 
 function deployCards(movies,description,images,years,url) {
 	var count = 0;
 
+	console.log(images+" <--images");
+	console.log(url+" <--url");
+	console.log(movies+" <--movies");
+	console.log(years+" <--years");
+	console.log(description+" <--description");
+	console.log("##########")
 	/* debug
 	console.log(images+" <--images");
 	console.log(url+" <--url");
@@ -179,4 +204,29 @@ function darkMode (x) {
 		navbar.classList.remove("bg-dark");
 	}
 	
+}
+
+													/** search mode **/
+	var searchInput = document.getElementById("searchInput");
+function search (movies){
+	var found;
+	var json = JSON.parse(data);
+	json.forEach(function(item){
+		if (movies == item["movieTitle"]){
+			movies = item["id"];
+			found = 1;			
+		} 
+	});
+
+	if (found == 1){
+		searchIndex = 1;
+		cardDeck(movies,description,images,years,url);
+	} else {
+		alert("Sorry, we don't have what you're looking for!");
+	}
+}
+
+var btnSearch = document.getElementById("btnSearch");
+btnSearch.onclick = function (){
+	search(searchInput.value);
 }
