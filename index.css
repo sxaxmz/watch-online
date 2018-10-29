@@ -1,10 +1,10 @@
 .footer {
-        width: 100%;
-        background-color: #000;
-        height: 120px;
-        padding-bottom: 7px;
-        margin-top: 165px;
-	    bottom:0;
+    width: 100%;
+    background-color: #000;
+    height: 120px;
+    padding-bottom: 7px;
+    margin-top: 165px;
+    bottom:0;
 }
 
 .footer img {
@@ -72,7 +72,7 @@
 
 .card img {
 	border-radius: 2em;
-	max-height: 60%;
+	max-height: 57%;
 }
 
 .card p {
@@ -129,8 +129,8 @@
 }
 
 @keyframes rolling {
-   from { right: 0px; }
-   to   { right: 95%; }
+   from { right: -30%; }
+   to   { right: 100%; }
 }
 
 .bg-dark a {
@@ -166,6 +166,14 @@
 }
 
 .dark .card h5 {
+	color: #fff;
+}
+
+.dark .modal-header .modal-title {
+	color: #fff;
+}
+
+.dark .modal-body p {
 	color: #fff;
 }
 

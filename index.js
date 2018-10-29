@@ -105,10 +105,9 @@ function movieInfo (el) {
 	var content = el.getElementsByTagName("p")[0].innerText;
 	var title = el.getElementsByTagName("h5")[0].innerText;
 	var date = el.getElementsByTagName("small")[0].innerText;
-	link.innerHTML = '<iframe src="'+movieLink(movieURL,title)+'"></iframe>';
-	console.log(el);
+	link.innerHTML = '<iframe src="'+"movies/"+movieLink(movieURL,title)+'"></iframe>';
 	movieTitle.innerText = title +" , "+ date;
-	movieDescription.innerText = content;
+	movieDescription.innerHTML = "<p>"+content+"</p>";
 }
 
 function movieLink (linkMovie,nameMovie){
@@ -213,4 +212,16 @@ function search (movies){
 var btnSearch = document.getElementById("btnSearch");
 btnSearch.onclick = function (){
 	search(searchInput.value);
+}
+
+													/** Notification **/
+notify();
+function notify (){
+	var json = JSON.parse(DataNotify);
+	var notiffication ="";
+	json.forEach(function(item){
+		notiffication += item["info"];
+		notiffication += " \xa0\xa0\xa0\xa0\xa0\ | \xa0\xa0\xa0\xa0\xa0\ ";
+	});
+	notifyTxt.innerText = notiffication;
 }
