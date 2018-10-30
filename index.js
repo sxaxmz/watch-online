@@ -37,10 +37,11 @@ function cardDeck (movies,description,images,years,url){
 
 function jsonToCard(movies,description,images,years,url){				
 	var json = JSON.parse(data);
+	var searchedMovie = movies;
+	var result = [];
 	json.forEach(function(item,index,array){
 		if (searchIndex == 1){
-			console.log("Searching for -->"+movies+" , current --> "+item["id"]);
-			if (movies == item['id']){
+			if (searchedMovie == item['id']){
 				 movies = item["movieTitle"];
 				 images = item['img']; 
 				 description = item['desc'];
@@ -48,6 +49,18 @@ function jsonToCard(movies,description,images,years,url){
 				 years = item['years'];
 
 				 deployCards(movies,description,images,years,url);
+
+			}
+		} else if (searchIndex == 2){
+			if (searchedMovie == item['geners']){
+				 movies = item["movieTitle"];
+				 images = item['img']; 
+				 description = item['desc'];
+				 url = item['url'];
+				 years = item['years'];
+
+				 deployCards(movies,description,images,years,url);
+				 result.push(movies);
 			}
 		} else if (searchIndex == 0){
 		 images = item['img']; 
@@ -57,6 +70,7 @@ function jsonToCard(movies,description,images,years,url){
 		 years = item['years'];	
 
 		 deployCards(movies,description,images,years,url);
+		 result.push(movies);
 		}
 
 		/*
@@ -67,8 +81,9 @@ function jsonToCard(movies,description,images,years,url){
 			console.log(description+" <--description-->"+index);
 			console.log("##########");
 			*/
-				
+			
 	});
+	console.log(result);	
 }
 
 function deployCards(movies,description,images,years,url) {
@@ -191,27 +206,47 @@ function darkMode (x) {
 
 													/** search mode **/
 	var searchInput = document.getElementById("searchInput");
-function search (movies){
+	var searchType = 0;
+function search (searchInput,searchType){
 	var found;
 	var json = JSON.parse(data);
 	json.forEach(function(item){
-		if (movies == item["movieTitle"]){
-			movies = item["id"];
-			found = 1;			
-		} 
+		if (searchType == 0){
+			if (searchInput == item["movieTitle"]){
+				searchInput = item["id"];
+				found = 1;			
+			} 
+		} else if (searchType == 1){
+			if (searchInput == item["geners"]){
+				found = 2;			
+			} 
+		}
 	});
 
-	if (found == 1){
-		searchIndex = 1;
-		cardDeck(movies,description,images,years,url);
+	if (found >=1) {
+		if (found == 1){
+			searchIndex = 1;			
+		} else if (found == 2){
+			searchIndex = 2;
+		}
+		cardDeck(searchInput,description,images,years,url);
 	} else {
 		alert("Sorry, we don't have what you're looking for!");
 	}
 }
 
+	var dropDownItem = document.querySelectorAll(".dropdown-item");
+dropDownItem.forEach(function(el){
+	el.onclick = function(){
+		searchType = 1;
+		search(el.innerText,searchType);
+	}
+});
+
 var btnSearch = document.getElementById("btnSearch");
 btnSearch.onclick = function (){
-	search(searchInput.value);
+	searchType = 0;
+	search(searchInput.value, searchType);
 }
 
 													/** Notification **/
