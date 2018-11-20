@@ -60,7 +60,6 @@
 	border-radius: 2em;
 	cursor: pointer;
 	text-align: center;
-	width: 161px;
 }
 
 .card:hover {
@@ -190,3 +189,29 @@
 	text-align: center;
 	font-weight: 550;
 }
+
+@media all and (min-width: 1024px) and (max-width:1300px) {
+	}
+
+@media all and (min-width: 720px) and (max-width:1023px) {
+	}
+
+@media all and (max-width: 719px){
+		.card {
+			max-width: 94%;
+			}
+		.card img {
+			height: 210px;
+		}
+	}
+@media all and (min-width: 500px) and (max-width:719px) {
+	}
+
+@media all and (max-width:499px) and (min-width:421px){ 
+	}
+
+@media all and (max-width:420px) and (min-width:371px){
+    }
+
+@media all and (max-width:370px){
+	}

@@ -95,7 +95,7 @@ function deployCards(movies,description,images,years,url) {
 
 	content += 
 			'<div class="card mx-2 mb-3" data-toggle="modal" data-target="#myModal">'+ 
-		    '    <img class="card-img-top" src="images/'+images+'" alt="Card image cap">'+
+		    '    <img class="card-img-top" src="images/'+images+'" alt="'+movies+'">'+
 		    '    <div class="card-body">'+
 		    '      <h5 class="card-title"id="titleMovie">'+movies+'</h5>'+
 		    '      <p class="card-text" id="descriptionMovie">'+description+'</p>'+
