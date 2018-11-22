@@ -120,6 +120,7 @@ function movieInfo (el) {
 	var content = el.getElementsByTagName("p")[0].innerText;
 	var title = el.getElementsByTagName("h5")[0].innerText;
 	var date = el.getElementsByTagName("small")[0].innerText;
+	document.title = title;
 	link.innerHTML = '<iframe src="'+"movies/"+movieLink(movieURL,title)+'"></iframe>';
 	movieTitle.innerText = title +" , "+ date;
 	movieDescription.innerHTML = "<p>"+content+"</p>";
